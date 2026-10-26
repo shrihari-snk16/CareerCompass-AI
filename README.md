@@ -6,7 +6,8 @@ CareerCompass AI helps students explore technical career paths based on their in
 
 🚀 Live Demo
 
-🔗 Live Website: [Add your deployed website link here]
+🔗 Live Website: https://careercompassai-inky.vercel.app/
+
 
 ---
 
