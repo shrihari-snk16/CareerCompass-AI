@@ -171,11 +171,11 @@ The current version uses a JavaScript-based scoring system. A Flask backend and 
 
 👨‍💻 Author
 
-Shrihari Kulkarni
+Shrihari Narsinh Kulkarni
 
 Electronics & Telecommunication Engineering Student
 
-DY Patil College of Engineering, Akurdi
+D Y Patil College of Engineering, Akurdi , Pune
 
 ---
 
