@@ -100,7 +100,7 @@ CareerCompass AI currently recommends careers across software development, AI, d
 
 📊 Skill Profile
 
-![CareerCompass AI Skill Profile](skill-profile.png.png)
+![CareerCompass AI Skill Profile](skillprofile.png.png)
 
 ⚖️ Career Comparison
 
