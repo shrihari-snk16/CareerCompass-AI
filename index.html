@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CareerCompass AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);--bg:#F2F5F9;--sf:#fff;--ink:#14213D;--mu:#55627F;--ln:#D6DEEA;--ac:#0B7A6E;--on:#fff;--as:#DCF2EE;--am:#9A6200;--ams:#FBEBC8}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1424;--sf:#151F36;--ink:#E8EDF7;--mu:#9DA9C4;--ln:#2A3654;--ac:#3CC9B5;--on:#0D1424;--as:#12332F;--am:#F2C25B;--ams:#3A2E10}}
+:root[data-theme="dark"]{--bg:#0D1424;--sf:#151F36;--ink:#E8EDF7;--mu:#9DA9C4;--ln:#2A3654;--ac:#3CC9B5;--on:#0D1424;--as:#12332F;--am:#F2C25B;--ams:#3A2E10}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Sora,system-ui,sans-serif}
+[hidden]{display:none!important}
+button,input{font:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.w{max-width:960px;margin:0 auto;padding:0 20px}
+header .w{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:16px;padding-bottom:8px}
+.brand{font-weight:700;font-size:1.15rem}
+nav{display:flex;gap:8px}
+nav .btn{padding:8px 14px}
+h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.12;letter-spacing:-.02em;margin:0 0 16px}
+h2{font-size:1.6rem;margin:24px 0 8px}
+h3{font-size:1.1rem;margin:16px 0 6px}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center;padding:32px 0}
+.hero svg{width:100%;max-width:300px;justify-self:center}
+.nd{transform-origin:100px 100px;animation:sw 2.2s cubic-bezier(.2,1.3,.4,1) 1}
+@keyframes sw{from{transform:rotate(-80deg)}}
+@media(prefers-reduced-motion:reduce){.nd{animation:none}}
+.note{color:var(--mu);font-size:.92rem}
+.btn{background:var(--ac);color:var(--on);border:0;border-radius:10px;padding:12px 22px;font-weight:600;cursor:pointer}
+.btn.gh{background:transparent;color:var(--ink);border:1px solid var(--ln)}
+fieldset{border:0;padding:0;margin:20px 0}
+legend{font-weight:600;font-size:1.1rem;margin-bottom:8px}
+.pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--ln);border-radius:99px;padding:8px 14px;margin:4px 6px 4px 0;cursor:pointer;background:var(--sf)}
+.pill:has(input:checked){border-color:var(--ac);background:var(--as)}
+input{accent-color:var(--ac)}
+.sk{display:grid;grid-template-columns:minmax(120px,1.2fr) 2fr 120px;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln)}
+.sk output{font-size:.85rem;color:var(--mu)}
+.err{color:var(--am);font-weight:600;min-height:1.5em}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:18px;margin:14px 0}
+.card h3{margin:0}
+.top{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.trk{height:10px;background:var(--ln);border-radius:5px;position:relative}
+.trk i{display:block;height:100%;background:var(--ac);border-radius:5px}
+.trk b{position:absolute;top:-4px;width:3px;height:18px;background:var(--am);border-radius:2px}
+.ch{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.85rem;margin:2px 4px 2px 0;color:var(--ink)}
+.g{background:var(--as)}
+.w2{background:var(--ams)}
+.cm{display:grid;grid-template-columns:minmax(110px,1fr) 2fr 50px;gap:12px;align-items:center;padding:6px 0;font-size:.92rem}
+.live{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:5;padding:12px 16px}
+#samples{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+td,th{border-bottom:1px solid var(--ln);padding:8px;text-align:left;vertical-align:top}
+.pl{list-style:none;padding:0}.pl label{cursor:pointer}.pl li:has(input:checked){text-decoration:line-through;color:var(--mu)}
+footer{padding:24px 0 32px}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero svg{max-width:200px;order:-1}.sk{grid-template-columns:1fr 120px}.sk label{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<header><div class="w"><span class="brand">CareerCompass AI</span><nav><button class="btn gh" data-go="home">Home</button><button class="btn gh" data-go="assess">Assessment</button><button class="btn gh" id="th">Light or dark</button></nav></div></header>
+<main class="w">
+<section id="home">
+<div class="hero"><div>
+<h1>Find the technical career that fits the skills you already have</h1>
+<p>Rate a few skills and CareerCompass AI ranks 13 engineering and software paths, explains each match and shows what to learn next.</p>
+<p><button class="btn" data-go="assess">Start the assessment</button></p>
+<p class="note">AI-Based Career Guidance and Recommendation System Using Machine Learning. Guidance only, never a verdict on your future.</p>
+</div>
+<svg viewBox="0 0 200 200" role="img" aria-label="Compass illustration"><circle cx="100" cy="100" r="92" fill="var(--sf)" stroke="var(--ln)" stroke-width="2"/><circle cx="100" cy="100" r="74" fill="none" stroke="var(--ln)" stroke-dasharray="2 8" stroke-width="6"/><g class="nd"><polygon points="100,28 112,100 88,100" fill="var(--ac)"/><polygon points="100,172 112,100 88,100" fill="var(--mu)" opacity=".5"/></g><circle cx="100" cy="100" r="7" fill="var(--ink)"/></svg>
+</div>
+<h2>How it works</h2>
+<ol><li>Choose the areas that interest you.</li><li>Rate your skills from 1 to 10. You only rate skills in your chosen areas.</li><li>Get your top five paths with strengths, skill gaps, a learning path and project ideas.</li></ol>
+<p class="note">This prototype scores you with a transparent weighted match against hand-written role profiles. The Flask backend and a Random Forest model trained on a clearly labelled synthetic dataset plug into this same page next.</p>
+</section>
+
+<section id="assess" hidden>
+<h2>Skill assessment</h2>
+<p>Pick the areas you’re curious about, then rate yourself honestly: 1 is “just heard of it”, 10 is “I could teach it”.</p>
+<p class="note">New here? Load demo data (made-up profiles, not real students):</p><div id="samples"></div>
+<form id="f" novalidate>
+<fieldset><legend>Interest areas (choose at least one)</legend><div id="areas"></div></fieldset>
+<fieldset><legend>Your skills</legend><div id="skills"></div></fieldset>
+<div id="live" class="card live"></div>
+<p id="err" class="err" role="alert"></p>
+<button class="btn" type="submit">Show my recommendations</button>
+</form>
+</section>
+
+<section id="results" hidden>
+<div class="bar"><h2>Your top career paths</h2><div><button class="btn gh" data-go="assess">Edit answers</button> <button class="btn gh" id="copy">Copy summary</button> <button class="btn gh" id="restart">Restart</button></div></div>
+<p class="note">Match score: how closely your ratings line up with the skills each role typically relies on, weighted by importance, plus a small bonus for your chosen interests. It compares options for you. It is not a probability of success.</p>
+<p id="sum" class="note"></p><div class="card"><h3>Your skill profile</h3><div id="radar" style="max-width:320px;margin:auto"></div><p class="note">Average rating per area. Areas you didn’t choose count as 1.</p></div>
+<div id="cards"></div><div id="cmp"></div>
+<div id="detail"></div>
+</section>
+</main>
+<footer class="w note">CareerCompass AI is a Fundamentals of AI mini-project (BTech Electronics and Telecommunication Engineering). It is a prototype: the role profiles are hand-written assumptions, and the recommendations are guidance only.</footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const AR={s:"Software and web",a:"Data and AI",c:"Cloud, DevOps and security",h:"Chip and hardware",e:"Embedded and signals"};
+const SK="ps|Problem-solving|*,ma|Mathematics|*,co|Communication|*,cr|Creativity|*,py|Python|sac,c|C programming|se,cpp|C++|she,jv|Java|s,dsa|Data structures and algorithms|s,web|Web development|s,db|Databases|sa,ml|AI and machine learning|a,da|Data analytics|a,cl|Cloud computing|c,aws|AWS|c,az|Microsoft Azure|c,dk|Docker|c,k8|Kubernetes|c,sec|Cybersecurity|c,de|Digital electronics|he,ae|Analog electronics|he,vlsi|VLSI design|h,chip|Chip design|h,vl|Verilog HDL|h,fpga|FPGA|he,ca|Computer architecture|he,em|Embedded systems|e,mc|Microcontrollers|e,iot|IoT|e,cs|Communication systems|e,sp|Signal processing|e".split(",").map(x=>{const[i,l,g]=x.split("|");return{i,l,g}});
+const L={};SK.forEach(s=>L[s.i]=s.l);
+const C=[
+["Software Engineer","s","Designs, builds and tests software that other people rely on.","dsa3 ps3 py2 jv2 cpp2 db1","Pick Python or Java and finish one course|Practise data structures a little each day|Build projects and keep them on GitHub","Library management system|Task scheduler with unit tests"],
+["Web Developer","s","Builds the pages and interfaces people see and use in a browser.","web3 cr2 ps2 db2 co1","Learn HTML, CSS and JavaScript|Make pages responsive and accessible|Learn a framework such as React","Personal portfolio site|Weather app using a public API"],
+["Full-Stack Developer","s","Owns both sides of a web product: the interface, and the server and database behind it.","web3 db3 py2 ps2 dsa1 co1","Learn web basics and JavaScript|Add a backend (Flask or Node) and SQL|Deploy a complete app","Notes app with login|Mini online store"],
+["AI/ML Engineer","a","Builds models that learn patterns from data and turns them into working features.","ml3 py3 ma3 da2 ps2 dsa1","Refresh Python, statistics and linear algebra|Learn scikit-learn on small datasets|Study neural networks and deploy a model","Spam classifier|Handwritten digit recognizer"],
+["Data Analyst","a","Turns raw data into charts and clear answers that guide decisions.","da3 db3 py2 ma2 co2","Learn Excel and SQL|Learn pandas and visualization|Practise telling a story with data","Sales dashboard|Cricket statistics analysis"],
+["Cloud Engineer","c","Designs and runs applications on cloud platforms such as AWS and Azure.","cl3 aws2 az2 dk2 py1","Learn Linux and networking basics|Earn a beginner cloud certification|Deploy a small app on AWS or Azure","Static website on cloud storage|Containerized app on a free-tier VM"],
+["DevOps Engineer","c","Automates building, testing and releasing software so teams ship safely and often.","dk3 k83 cl2 py2 ps2","Learn Linux, Git and scripting|Learn Docker, then Kubernetes|Build a CI/CD pipeline","GitHub Actions pipeline|Dockerized Flask app"],
+["Cybersecurity Analyst","c","Monitors systems, finds weaknesses and responds to security incidents.","sec3 ps3 py2 cl1 co1","Learn networking and Linux|Practise on legal labs and beginner CTFs|Study security fundamentals","Password strength checker|Home network scan report"],
+["VLSI Design Engineer","h","Designs digital and mixed-signal integrated circuits, from RTL to layout.","vlsi3 vl3 de3 ae2 ca2 fpga1","Master digital electronics|Learn Verilog and simulate designs|Study CMOS and the chip design flow","4-bit ALU in Verilog|Traffic light state machine"],
+["Chip Design Engineer","h","Works on the architecture and logic of processors and chips, from specification to verification.","chip3 vl3 de3 ca3 vlsi2 ae1","Master digital logic and computer architecture|Learn Verilog or SystemVerilog|Study pipelines and verification basics","Simple RISC CPU in Verilog|Cache controller model"],
+["Embedded Systems Engineer","e","Writes the software that runs inside devices such as sensors, wearables and controllers.","em3 mc3 c3 de2 iot2 ca1","Learn C and microcontroller basics|Work with sensors and communication protocols|Learn an RTOS","Temperature logger|Line-following robot"],
+["Electronics Engineer","h","Designs, tests and troubleshoots electronic circuits and hardware products.","ae3 de3 mc2 ps2 ma2 sp1","Strengthen circuit theory|Learn to simulate and build circuits|Learn PCB design","Regulated power supply|Audio amplifier"],
+["Signal Processing Engineer","e","Develops algorithms that filter, compress and interpret audio, radio and sensor signals.","sp3 ma3 cs2 py2 ps2","Strengthen maths and signals and systems|Learn filtering and the FFT in Python or MATLAB|Study real signals","Audio equalizer|ECG noise filter"]
+];
+let vals={},R=[];
+const lvl=v=>v<4?"Beginner":v<7?"Intermediate":"Advanced";
+const sel=()=>$$("#areas input:checked").map(x=>x.value);
+const vis=()=>new Set(SK.filter(s=>s.g==="*"||sel().some(k=>s.g.includes(k))).map(s=>s.i));
+$("#areas").innerHTML=Object.entries(AR).map(([k,v])=>`<label class="pill"><input type="checkbox" value="${k}">${v}</label>`).join("");
+function draw(){
+ const v=vis();
+ $("#skills").innerHTML=SK.filter(s=>v.has(s.i)).map(s=>{const n=vals[s.i]||1;return `<div class="sk"><label for="r-${s.i}">${s.l}</label><input id="r-${s.i}" type="range" min="1" max="10" value="${n}" data-i="${s.i}"><output>${n} ${lvl(n)}</output></div>`}).join("");
+}
+function go(v){["home","assess","results"].forEach(x=>$("#"+x).hidden=x!==v);scrollTo(0,0)}
+function show(n){
+ const r=R[n],c=r.c,tg=w=>w>2?8:w>1?6:4;
+ $("#detail").innerHTML=`<div class="card"><h2 style="margin-top:0">${c[0]}</h2><p>${c[2]}</p><h3>Your skills vs this role</h3><p class="note">Bar = your rating. Marker = typical level for this role (a design assumption, not measured data).</p>${r.sk.map(x=>`<div class="cm"><span>${L[x.i]}</span><div class="trk"><i style="width:${r.rt(x.i)*10}%"></i><b style="left:${tg(x.w)*10}%"></b></div><span>${r.rt(x.i)}/${tg(x.w)}</span></div>`).join("")}<h3>What if you improve?</h3><p class="note">Drag a skill up to see how your match for this role would change.</p><div id="wi"></div><p id="wr" style="font-weight:600"></p><h3>Beginner learning path</h3><ul class="pl">${c[4].split("|").map(x=>`<li><label><input type="checkbox"> ${x}</label></li>`).join("")}</ul><h3>Projects to build</h3><ul>${c[5].split("|").map(x=>`<li>${x}</li>`).join("")}</ul></div>`;wi(n);
+}
+function calc(){
+ const v=vis(),s=sel(),rt=i=>v.has(i)?vals[i]||1:1;
+ return C.map((c,k)=>{
+  const sk=c[3].split(" ").map(t=>({i:t.slice(0,-1),w:+t.slice(-1)})),tw=sk.reduce((a,x)=>a+x.w,0);
+  const sc=sk.reduce((a,x)=>a+x.w*rt(x.i),0)/(10*tw)*100+(s.includes(c[1])?8:0);
+  return{k,c,sk,rt,score:Math.min(100,Math.round(sc))};
+ }).sort((a,b)=>b.score-a.score);
+}
+function rank(){
+ R=calc().slice(0,5);
+ $("#cards").innerHTML=R.map((r,n)=>{
+  const st=r.sk.filter(x=>x.w>1&&r.rt(x.i)>=7).map(x=>L[x.i]).slice(0,3),gp=r.sk.filter(x=>x.w>1&&r.rt(x.i)<6).map(x=>L[x.i]).slice(0,4);
+  const why=st.length?`Recommended because you rated ${st.join(", ")} highly, and this role leans on them.`:"Your interests point here, but this role’s key skills are still developing.";
+  return `<article class="card"><div class="top"><h3>${n+1}. ${r.c[0]}</h3><strong>${r.score}% match</strong></div><div class="trk"><i style="width:${r.score}%"></i></div><p>${why}</p>${st.map(x=>`<span class="ch g">Strength: ${x}</span>`).join("")}${gp.map(x=>`<span class="ch w2">Improve: ${x}</span>`).join("")}<p><button class="btn gh" data-d="${n}">View career details</button> <label class="note"><input type="checkbox" data-c="${n}"> Compare</label></p></article>`;
+ }).join("");
+ show(0);radar();cmp();save();
+}
+$("#areas").addEventListener("change",()=>{draw();live()});
+$("#skills").addEventListener("input",e=>{const t=e.target;vals[t.dataset.i]=+t.value;t.nextElementSibling.textContent=t.value+" "+lvl(+t.value);live()});
+$("#f").addEventListener("submit",e=>{
+ e.preventDefault();const er=$("#err");
+ if(!sel().length){er.textContent="Choose at least one interest area so we know where to focus.";return}
+ if([...vis()].filter(i=>(vals[i]||1)>1).length<4){er.textContent="Rate at least four skills above 1 so the match means something.";return}
+ er.textContent="";rank();go("results");
+});
+$("#cards").addEventListener("click",e=>{const d=e.target.dataset.d;if(d!=null){show(+d);$("#detail").scrollIntoView({behavior:"smooth"})}});
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)go(g.dataset.go)});
+$("#restart").onclick=()=>{vals={};$$("#areas input").forEach(x=>x.checked=false);$("#err").textContent="";draw();live();go("assess")};
+const SP={"Web builder":["s","ps8 ma6 co7 cr8 py6 jv4 dsa5 web9 db7"],"Data explorer":["sa","ps7 ma8 co7 cr5 py8 db7 ml7 da9 dsa5"],"Chip enthusiast":["h","ps7 ma7 co5 cr5 de9 ae7 vlsi7 chip6 vl8 fpga6 ca7"],"Embedded tinkerer":["e","ps8 ma6 co5 cr6 c9 cpp5 de7 ae5 fpga4 ca5 em8 mc9 iot8 cs5 sp4"]};
+const SH=["Software","Data and AI","Cloud and security","Chip and hardware","Embedded"];
+let sv;try{sv=JSON.parse(localStorage.getItem("cc"))}catch(e){}
+$("#samples").innerHTML=(sv&&sv.a?`<button type="button" class="btn" data-s="__resume">Resume my last assessment</button>`:"")+Object.keys(SP).map(k=>`<button type="button" class="btn gh" data-s="${k}">${k}</button>`).join("");
+function apply(a,v){vals=v;$$("#areas input").forEach(x=>x.checked=a.includes(x.value));draw();live();$("#err").textContent=""}
+$("#samples").onclick=e=>{const k=e.target.dataset.s;if(!k)return;if(k==="__resume"){apply(sv.a.join(""),sv.vals);return}const[a,t]=SP[k],v={};t.split(" ").forEach(x=>v[x.slice(0,-1)]=+x.slice(-1));apply(a,v)};
+function save(){try{localStorage.setItem("cc",JSON.stringify({vals,a:sel()}))}catch(e){}}
+function live(){
+ const n=[...vis()].filter(i=>(vals[i]||1)>1).length;
+ $("#live").innerHTML=`<strong>Live preview</strong> <span class="note">${n} skill${n==1?"":"s"} rated${n<4?" (rate at least 4)":""}</span><br>`+(n?calc().slice(0,3).map(r=>`<span class="ch g">${r.c[0]} ${r.score}%</span>`).join(""):`<span class="note">Move a slider to see your leading careers update.</span>`);
+}
+function wi(n){
+ const r=R[n],P={};r.sk.forEach(x=>P[x.i]=r.rt(x.i));
+ $("#wi").innerHTML=r.sk.map(x=>`<div class="cm"><label for="w-${x.i}">${L[x.i]}</label><input id="w-${x.i}" type="range" min="1" max="10" value="${P[x.i]}" data-i="${x.i}"><span>${P[x.i]}</span></div>`).join("");
+ $("#wr").textContent=`Your match today: ${r.score}%.`;
+ $("#wi").oninput=e=>{const t=e.target;P[t.dataset.i]=+t.value;t.nextElementSibling.textContent=t.value;
+  const tw=r.sk.reduce((a,x)=>a+x.w,0),sc=Math.min(100,Math.round(r.sk.reduce((a,x)=>a+x.w*P[x.i],0)/(10*tw)*100+(sel().includes(r.c[1])?8:0)));
+  $("#wr").textContent=`Projected match: ${sc}% (today ${r.score}%).`+(sc>r.score?` That’s +${sc-r.score} points.`:"")};
+}
+function cmp(){
+ const ids=$$("#cards input:checked").map(x=>+x.dataset.c),el=$("#cmp");
+ if(ids.length<2){el.innerHTML=ids.length?`<p class="note">Tick Compare on one more path.</p>`:"";return}
+ el.innerHTML=`<div class="card" style="overflow-x:auto"><h3>Side-by-side comparison</h3><table><tr><th></th>${ids.map(i=>`<th>${R[i].c[0]}</th>`).join("")}</tr><tr><td>Match</td>${ids.map(i=>`<td>${R[i].score}%</td>`).join("")}</tr><tr><td>Key skills (your level)</td>${ids.map(i=>`<td>${R[i].sk.filter(x=>x.w>2).map(x=>L[x.i]+" "+R[i].rt(x.i)+"/10").join("<br>")}</td>`).join("")}</tr><tr><td>Skills to improve</td>${ids.map(i=>`<td>${R[i].sk.filter(x=>x.w>1&&R[i].rt(x.i)<6).length}</td>`).join("")}</tr><tr><td>First step</td>${ids.map(i=>`<td>${R[i].c[4].split("|")[0]}</td>`).join("")}</tr></table></div>`;
+}
+function radar(){
+ const v=vis(),ks=Object.keys(AR),av=ks.map(k=>{const a=SK.filter(s=>s.g.includes(k));return a.reduce((t,s)=>t+(v.has(s.i)?vals[s.i]||1:1),0)/a.length});
+ const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/5;return[(100+r*Math.cos(a)).toFixed(1),(100+r*Math.sin(a)).toFixed(1)]};
+ const ring=f=>ks.map((_,i)=>pt(i,70*f).join(",")).join(" ");
+ $("#radar").innerHTML=`<svg viewBox="0 0 200 200" role="img" aria-label="Average skill rating by area"><polygon points="${ring(1)}" fill="none" stroke="var(--ln)"/><polygon points="${ring(.5)}" fill="none" stroke="var(--ln)"/><polygon points="${ks.map((_,i)=>pt(i,av[i]*7).join(",")).join(" ")}" fill="var(--as)" stroke="var(--ac)" stroke-width="2"/>${ks.map((k,i)=>{const[x,y]=pt(i,84);return `<text x="${x}" y="${y}" text-anchor="middle" font-size="7" fill="var(--mu)">${SH[i]} ${av[i].toFixed(1)}</text>`}).join("")}</svg>`;
+}
+$("#cards").addEventListener("change",e=>{if(e.target.dataset.c==null)return;if($$("#cards input:checked").length>3)e.target.checked=false;cmp()});
+$("#copy").onclick=async()=>{
+ const t="CareerCompass AI top matches: "+R.map((r,n)=>`${n+1}. ${r.c[0]} (${r.score}%)`).join("; ")+". Guidance only, not a prediction.",b=$("#copy");
+ $("#sum").textContent=t;
+ try{await navigator.clipboard.writeText(t);b.textContent="Copied"}catch(e){b.textContent="Select the text below"}
+};
+$("#th").onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+draw();live();
+</script>
+</body>
+</html>
